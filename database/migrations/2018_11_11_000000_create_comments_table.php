@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('title');
             $table->longText('body');
+            $table->timestamps();
         });
     }
 

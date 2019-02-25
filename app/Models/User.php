@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
@@ -21,7 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'image_profile'
+        'avatar_url'
     ];
 
     /**
@@ -35,11 +34,11 @@ class User extends Authenticatable
 
     protected $attributes = [
         'nickname' => 'nick',
-        'image_profile' => 'no'
+        'avatar_url' => 'no'
     ];
 
-    /*public function comments()
+    public function comments()
     {
-        return $this->hasMany(Comment::class);
-    }*/
+        return $this->hasMany('\App\Models\Comment', 'id_user');
+    }
 }

@@ -17,11 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->prefix('v1')->group(function() {
-    Route::resources(
-        [
-            'comments'  =>  'CommentsController',
-            'users'     =>  'UsersController'
-        ]
-    );
+Route::prefix('v1')->group(function() {
+
+    Route::post('users/login', 'UsersController@login');
+    Route::post('users/register', 'UsersController@register');
+
+    Route::resource('comments', 'CommentsController');
+    Route::resource('users', 'UsersController');
+
 });
